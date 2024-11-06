@@ -13,6 +13,7 @@ public class Dog {
     private String name;
     private String breed;
     private String gender;
+    private String imgPath;
     private int age;
 
     @Override
@@ -22,6 +23,7 @@ public class Dog {
         hash = 79 * hash + Objects.hashCode(this.name);
         hash = 79 * hash + Objects.hashCode(this.breed);
         hash = 79 * hash + Objects.hashCode(this.gender);
+        hash = 79 * hash + Objects.hashCode(this.imgPath);
         hash = 79 * hash + Objects.hashCode(this.age);
         return hash;
     }
@@ -44,6 +46,9 @@ public class Dog {
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
+        if (!Objects.equals(this.imgPath, other.imgPath)) {
+            return false;
+        }
         if (!Objects.equals(this.gender, other.gender)) {
             return false;
         }
@@ -57,6 +62,7 @@ public class Dog {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Dog{");
         sb.append("id=").append(id);
+        sb.append(", imgPath=").append(imgPath).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", breed=").append(breed).append('\'');
         sb.append(", gender=").append(gender).append('\'');
