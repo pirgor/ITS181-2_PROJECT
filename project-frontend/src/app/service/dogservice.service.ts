@@ -6,17 +6,21 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DogserviceService {
-  countriesUrl: string
+export class DogService {
+  apiUrl: string
   constructor(private http: HttpClient){
-      this.countriesUrl = 'http://localhost:18080/api';
+      this.apiUrl = 'http://localhost:18080/api';
   }
 
-  public getCountry(id: number): Observable<Dog>{
-      return this.http.get<Dog>(this.countriesUrl + '/show-country/' + id.toString());     
+  public getDog(id: number): Observable<Dog>{
+      return this.http.get<Dog>(this.apiUrl + '/dog/' + id.toString());     
   }
   
-  public getCountries(): Observable<Dog[]>{
-      return this.http.get<Dog[]>(this.countriesUrl + '/countries/');
+  public getDogs(): Observable<Dog[]>{
+      return this.http.get<Dog[]>(this.apiUrl + '/dogs/');
   }
+  
+  public addDog(dog: Dog): Observable<Dog> {
+    return this.http.post<Dog>(this.apiUrl + '/add-dog', dog);
+}
 }

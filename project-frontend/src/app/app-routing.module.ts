@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShowCountryComponent } from './show-dog/show-country.component';
-import { ShowCountriesComponent } from './show-dogs/show-countries.component';
+import { ShowDogsComponent } from './show-dogs/show-dogs.component';
+import { ShowDogComponent } from './show-dog/show-dog.component';
+import { AddDogComponent } from './add-dog/add-dog.component';
+import { HomeComponent } from './home/home.component';
 const routes: Routes = [
-  {path:'', redirectTo: '/countries', pathMatch:'full'},
-  {path: 'countries', component: ShowCountriesComponent},
-  {path: 'country/:id', component: ShowCountryComponent},
+  {path:'', redirectTo: '/home', pathMatch:'full'},
+  {path: 'dogs', component: ShowDogsComponent},
+  {path: 'dogs/:id', component: ShowDogComponent},
+  {path: 'add', component: AddDogComponent},
+  {path: 'home', component: HomeComponent}
 ];
 
 @NgModule({

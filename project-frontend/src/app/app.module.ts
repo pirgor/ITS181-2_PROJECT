@@ -4,15 +4,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ShowDogsComponent } from './show-dogs/show-dogs.component';
+import { ShowDogComponent } from './show-dog/show-dog.component';
+import { AddDogComponent } from './add-dog/add-dog.component';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ShowDogsComponent,
+    ShowDogComponent,
+    AddDogComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
