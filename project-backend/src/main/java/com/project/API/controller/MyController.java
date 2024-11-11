@@ -1,10 +1,13 @@
 package com.project.API.controller;
 
 import com.project.API.model.Dog;
+import com.project.API.model.User;
 import com.project.API.service.IDogService;
+import com.project.API.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -14,6 +17,21 @@ public class MyController {
 
     @Autowired
     private IDogService dogService;
+
+    @Autowired
+    private IUserService userService;
+
+    //Login (wait di ko pa alam pano gamitin to sa angular)
+    @PostMapping("/login")
+    public String login(@RequestBody User loginRequest, HttpSession session) {
+        User user = userService.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
+        if (user != null) {
+            session.setAttribute("loggedInUser", user);
+            return "Login successful";
+        } else {
+            return "Invalid email or password";
+        }
+    }
 
     // Get all dogs
     @GetMapping("/dogs")
@@ -44,4 +62,6 @@ public class MyController {
     public void deleteDog(@PathVariable long id) {
         dogService.deleteDog(id);
     }
+
+
 }
