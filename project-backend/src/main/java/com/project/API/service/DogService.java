@@ -31,13 +31,21 @@ public class DogService implements IDogService{
     public Dog addDog(Dog dog) {return repository.save(dog);}
 
     @Override
-    public Dog updateDog(long id){
-        Optional<Dog> dog = repository.findById(id);
-        if(dog.isPresent()){
-            return repository.save(dog.get());
+    public Dog updateDog(long id, Dog updatedDog) {
+        Optional<Dog> dogOptional = repository.findById(id);
+        if (dogOptional.isPresent()) {
+            Dog dog = dogOptional.get();
+
+            dog.setName(updatedDog.getName());
+            dog.setBreed(updatedDog.getBreed());
+            dog.setGender(updatedDog.getGender());
+            dog.setImg(updatedDog.getImg());
+            dog.setAge(updatedDog.getAge());
+
+            return repository.save(dog);
+        } else {
+            throw new RuntimeException("Dog not found with id " + id);
         }
-        else
-            return null;
     }
 
     @Override

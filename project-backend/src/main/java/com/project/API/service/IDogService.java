@@ -11,7 +11,7 @@ public interface IDogService {
 
     Dog addDog(Dog dog);
 
-    Dog updateDog(long id);
+    Dog updateDog(long id, Dog updatedDog);
 
     Dog deleteDog(long id);
 }

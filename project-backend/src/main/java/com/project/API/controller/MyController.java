@@ -21,22 +21,22 @@ public class MyController {
         return dogService.getDogs();
     }
 
-    // Get a single dog by ID
+    // Get by ID
     @GetMapping("/adopt/{id}")
     public Dog showDog(@PathVariable long id) {
         return dogService.getDog(id);
     }
 
-    // Add a new dog
+    // Add Dog
     @PostMapping("/add-dog")
     public Dog addDog(@RequestBody Dog dog) {
         return dogService.addDog(dog);
     }
 
-    // Update Information
+    // Update Dog
     @PutMapping("/update/{id}")
-    public Dog updateDog(@PathVariable long id) {
-        return dogService.updateDog(id);
+    public Dog updateDog(@PathVariable long id, @RequestBody Dog updatedDog) {
+        return dogService.updateDog(id, updatedDog);
     }
 
     // Delete By ID
