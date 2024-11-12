@@ -12,8 +12,8 @@ export class DogService {
       this.apiUrl = 'http://localhost:18080/api';
   }
 
-  public getDog(id: number): Observable<Dog>{
-      return this.http.get<Dog>(this.apiUrl + '/dog/' + id.toString());     
+  public getDog(id: number | string): Observable<Dog>{
+      return this.http.get<Dog>(this.apiUrl + '/adopt/' + id.toString());     
   }
   
   public getDogs(): Observable<Dog[]>{
