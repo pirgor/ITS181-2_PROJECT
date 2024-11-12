@@ -1,0 +1,31 @@
+<div>
+  Edit {{ selectedDog?.name }}
+</div>
+
+<label for="dogSelect">Choose a dog:</label>
+<select id="dogSelect" [(ngModel)]="selectedDogId">
+  <option *ngFor="let dog of dogs" [value]="dog.id">{{ dog.name }}</option>
+</select>
+
+<div *ngIf="selectedDog">
+  <img [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}">
+
+  <div>
+    <input type="text" [(ngModel)]="selectedDog.name" name="name" placeholder="Name" required>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="selectedDog.breed" name="breed" placeholder="Breed" required>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="selectedDog.gender" name="gender" placeholder="Gender" required>
+  </div>
+  <div>
+    <input type="text" [(ngModel)]="selectedDog.img" name="img" placeholder="Image URL" required>
+  </div>
+  <div>
+    <input type="number" [(ngModel)]="selectedDog.age" name="age" placeholder="Age" required>
+  </div>
+
+  <button type="button" (click)="reset()">Reset</button>
+  <button type="button" (click)="editDog()">Save</button>
+</div>

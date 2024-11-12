@@ -22,5 +22,9 @@ export class DogService {
 
   public addDog(dog: Dog): Observable<Dog> {
     return this.http.post<Dog>(this.apiUrl + '/add-dog', dog);
-}
+  }
+
+  public editDog(dog: Dog): Observable<Dog> {
+    return this.http.put<Dog>(this.apiUrl + '/update/' + dog.id, dog);
+  }
 }
