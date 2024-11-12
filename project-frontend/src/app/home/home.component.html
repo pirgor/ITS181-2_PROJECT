@@ -1,18 +1,54 @@
-<body>
-    <!-- Banner Section -->
-    <div class="banner">
-      <div class="banner-text">
-        <h1>Welcome to PAWS Adoption</h1>
-        <p>Find your new furry friend today!</p>
-      </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/logo.png?raw=true" alt="Logo" width="70"
+        height="70" class="d-inline-block align-text-top">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+        </li>
+        <li class="nav-item" *ngIf="user?.userType === 'admin'">
+          <a class="nav-link" href="/add">Add Record</a>
+        </li>
+        <li class="nav-item" *ngIf="user?.userType === 'admin'">
+          <a class="nav-link" href="#">Manage Records</a>
+        </li>
+        <li class="nav-item" *ngIf="user?.userType === 'admin'">
+          <a class="nav-link" href="/dogs">View Records</a>
+        </li>
+        <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
+          <a class="nav-link" href="#">About PAWS</a>
+        </li>
+        <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
+          <a class="nav-link" href="/dogs">Adopt</a>
+        </li>
+      </ul>
+      <button class="btn btn-outline-success ms-auto" [routerLink]="['/login']"
+        *ngIf="user?.userType === null">Login</button>
+      <button class="btn btn-outline-success ms-auto" (click)="logout()"
+        *ngIf="user?.userType === 'admin' || user?.userType === 'user'">Logout</button>
     </div>
-  
-    <!-- Content Section -->
-    <div class="content">
-      <h2>Adopt a Dog and Change a Life</h2>
-      <p>
-        At PAWS, we are dedicated to connecting loving families with wonderful dogs in need of a home. Browse through our available pets and find the perfect companion for you.
-      </p>
-      <button class="button" onclick="window.location.href='/dogs'">View Available Dogs</button>
-    </div>
-  </body>
+  </div>
+</nav>
+<!-- Navbar -->
+<div class="banner">
+  <div class="banner-text">
+    <h1>Welcome to PAWS Adoption</h1>
+    <p>Find your new furry friend today!</p>
+  </div>
+</div>
+<div class="content">
+  <h2>Adopt a Dog and Change a Life</h2>
+  <p>
+    At PAWS, we are dedicated to connecting loving families with wonderful dogs in need of a home. Browse through our
+    available pets and find the perfect companion for you.
+  </p>
+  <button class="button" onclick="window.location.href='/dogs'">View Available Dogs</button>
+</div>

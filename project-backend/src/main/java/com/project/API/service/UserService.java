@@ -27,7 +27,7 @@ public class UserService implements IUserService {
                 System.out.println("Password does not match.");
             }
         } else {
-            System.out.println("User not found with email: " + email);
+            System.out.println("User with Email " + email + " not found.");
         }
         return null;
     }

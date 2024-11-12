@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img src="https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/logo.png?raw=true" alt="Logo"
+                width="70" height="70" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/dogs">Adopt</a>
+                </li>
+            </ul>
+            <button class="btn btn-outline-success ms-auto">Login</button>
+        </div>
+    </div>
+</nav>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg p-4">
+                <div class="text-center mb-4">
+                    <a class="navbar-brand" href="javascript:(0);">
+                        <img src="https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/logo.png?raw=true" alt="Logo"
+                            width="100" height="100" class="d-inline-block align-text-top">
+                    </a>
+                </div>
+                <h2 class="text-center mb-4">Login</h2>
+                <form (ngSubmit)="onLogin()">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" [(ngModel)]="user.email" name="email" id="email" class="form-control" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" [(ngModel)]="user.password" name="password" id="password" class="form-control" required />
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,8 @@ import com.project.API.model.User;
 import com.project.API.service.IDogService;
 import com.project.API.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -21,15 +23,15 @@ public class MyController {
     @Autowired
     private IUserService userService;
 
-    //Login (wait di ko pa alam pano gamitin to sa angular)
+    //Login
     @PostMapping("/login")
-    public String login(@RequestBody User loginRequest, HttpSession session) {
+    public ResponseEntity<?> login(@RequestBody User loginRequest, HttpSession session) {
         User user = userService.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         if (user != null) {
             session.setAttribute("loggedInUser", user);
-            return "Login successful";
+            return ResponseEntity.ok(user);
         } else {
-            return "Invalid email or password";
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid email or password");
         }
     }
 
@@ -62,6 +64,5 @@ public class MyController {
     public void deleteDog(@PathVariable long id) {
         dogService.deleteDog(id);
     }
-
 
 }
