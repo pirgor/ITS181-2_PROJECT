@@ -41,10 +41,8 @@
 
 <div *ngIf="user?.userType === 'admin'">
   <div class="container mt-4">
-    <h3>Edit {{ selectedDog?.name }}</h3>
-
     <div class="mb-3">
-      <label for="dogSelect" class="form-label">Choose a dog:</label>
+      <label for="dogSelect" class="display-6 form-label">Choose a dog:</label>
       <select class="form-select" id="dogSelect" [(ngModel)]="selectedDogId">
         <option *ngFor="let dog of dogs" [value]="dog.id">{{ dog.name }}</option>
       </select>
@@ -53,7 +51,7 @@
     <form (ngSubmit)="editDog()">
       <div *ngIf="selectedDog" class="row">
         <div class="col-md-4 text-center">
-          <div class="card border-primary mb-3">
+          <div class="card border-primary mb-3 shadow">
             <div class="card-header">Saved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="oldDog.img" alt="Image of {{ oldDog.name }}" class="img-fluid mb-2">
@@ -66,7 +64,7 @@
         </div>
 
         <div class="col-md-4 text-center">
-          <div class="card border-success mb-3">
+          <div class="card border-success mb-3 shadow">
             <div class="card-header">Unsaved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-2">
@@ -101,6 +99,7 @@
           </div>
 
           <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-danger" (click)="deleteDog()">Delete</button>
             <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
             <button type="submit" class="btn btn-primary">Save</button>
           </div>

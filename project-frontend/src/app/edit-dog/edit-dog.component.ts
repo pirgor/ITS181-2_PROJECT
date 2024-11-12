@@ -51,6 +51,21 @@ export class EditDogComponent implements OnInit {
     }
   }
 
+  deleteDog() {
+    if (this.oldDog) {
+      this.dogService.deleteDog(this.oldDog).subscribe({
+        next: () => {
+          console.log('Dog deleted successfully');
+          this.selectedDog = null;
+          this.dogService.getDogs().subscribe((dogs) => this.dogs = dogs);
+        },
+        error: (error) => {
+          console.error('Error deleting dog', error);
+        }
+      });
+    }
+  }
+
   reset() {
     this.selectedDog = {...this.oldDog};
     let dog = this.dogs.find(dog => dog.id == this.oldDog.id);
