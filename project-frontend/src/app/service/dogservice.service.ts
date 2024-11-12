@@ -13,13 +13,13 @@ export class DogService {
   }
 
   public getDog(id: number): Observable<Dog>{
-      return this.http.get<Dog>(this.apiUrl + '/dog/' + id.toString());     
+      return this.http.get<Dog>(this.apiUrl + '/adopt/' + id.toString());
   }
-  
+
   public getDogs(): Observable<Dog[]>{
       return this.http.get<Dog[]>(this.apiUrl + '/dogs/');
   }
-  
+
   public addDog(dog: Dog): Observable<Dog> {
     return this.http.post<Dog>(this.apiUrl + '/add-dog', dog);
 }
