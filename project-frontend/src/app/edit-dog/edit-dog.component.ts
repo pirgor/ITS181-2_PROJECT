@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Dog } from 'app/model/dog.model';
+import { AuthService } from 'app/service/auth.service';
 import { DogService } from 'app/service/dogservice.service';
 
 @Component({
@@ -15,29 +16,31 @@ export class EditDogComponent implements OnInit {
   dogs: Dog[] = [];
   selectedDog: Dog | null = null;
 
-  constructor(private dogService: DogService) { }
+  user: any;
 
+  constructor(private authService: AuthService, private dogService: DogService) { }
 
   ngOnInit(): void {
+    this.user = this.authService.getUser();
     this.dogService.getDogs().subscribe((dogs) => this.dogs = dogs);
   }
 
 
   set selectedDogId(id: number) {
-    console.log('Id' + id);
-    this.selectedDogId = id;
-    this.selectedDog = this.dogs.find(dog => dog.id === this.selectedDogId) || null;
+    this.selectedDog = this.dogs.find(dog => { return dog.id == id; }) || null;
+    this.oldDog = this.selectedDog ? {...this.selectedDog} : this.oldDog;
   }
 
   editDog() {
+    this.newDog = this.selectedDog ? {...this.selectedDog} : this.newDog;
     if (this.newDog.name && this.newDog.breed && this.newDog.gender && this.newDog.img && this.newDog.age) {
       this.dogService.editDog(this.newDog).subscribe({
         next: () => {
-          console.log('Dog updated successfully');
+          console.log(`${this.newDog.name} updated successfully`);
           //this.router.navigate(['/']);
         },
         error: (error) => {
-          console.error('Error editing dog:', error);
+          console.error(`Error editing ${this.newDog.name}:`, error);
         }
       });
     } else {
@@ -46,6 +49,13 @@ export class EditDogComponent implements OnInit {
   }
 
   reset() {
-    this.newDog = this.oldDog
+    this.selectedDog = this.oldDog;
+    let dog = this.dogs.find(dog => dog.id == this.oldDog.id);
+    if (dog) { dog.name = this.oldDog.name };
+  }
+
+  logout(): void{
+    this.authService.logout();
+    location.reload();
   }
 }
