@@ -1,5 +1,5 @@
 export class Dog {
-    id?: number;
+    id?: number = 0;
     name: String = ''
     breed: String = ''
     gender: String = ''
