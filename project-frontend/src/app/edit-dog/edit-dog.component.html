@@ -54,7 +54,7 @@
       <div *ngIf="selectedDog" class="row">
         <div class="col-md-4 text-center">
           <div class="card border-primary mb-3">
-            <div class="card-header">Before</div>
+            <div class="card-header">Saved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="oldDog.img" alt="Image of {{ oldDog.name }}" class="img-fluid mb-2">
               <h5>{{ oldDog.name }}</h5>
@@ -67,7 +67,7 @@
 
         <div class="col-md-4 text-center">
           <div class="card border-success mb-3">
-            <div class="card-header">After</div>
+            <div class="card-header">Unsaved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-2">
               <h5>{{ selectedDog.name }}</h5>
