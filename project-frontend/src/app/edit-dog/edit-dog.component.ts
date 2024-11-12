@@ -27,7 +27,8 @@ export class EditDogComponent implements OnInit {
 
 
   set selectedDogId(id: number) {
-    this.selectedDog = this.dogs.find(dog => { return dog.id == id; }) || null;
+    let dog = this.dogs.find(dog => { return dog.id == id; }) || null;
+    if (dog) { this.selectedDog = {...dog} };
     this.oldDog = this.selectedDog ? {...this.selectedDog} : this.oldDog;
   }
 
@@ -37,6 +38,8 @@ export class EditDogComponent implements OnInit {
       this.dogService.editDog(this.newDog).subscribe({
         next: () => {
           console.log(`${this.newDog.name} updated successfully`);
+          this.dogService.getDogs().subscribe((dogs) => this.dogs = dogs);
+          this.oldDog = {...this.newDog};
           //this.router.navigate(['/']);
         },
         error: (error) => {
@@ -49,7 +52,7 @@ export class EditDogComponent implements OnInit {
   }
 
   reset() {
-    this.selectedDog = this.oldDog;
+    this.selectedDog = {...this.oldDog};
     let dog = this.dogs.find(dog => dog.id == this.oldDog.id);
     if (dog) { dog.name = this.oldDog.name };
   }

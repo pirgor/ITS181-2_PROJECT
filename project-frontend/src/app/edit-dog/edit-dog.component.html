@@ -52,11 +52,33 @@
 
     <form (ngSubmit)="editDog()">
       <div *ngIf="selectedDog" class="row">
-        <div class="col-md-4">
-          <img height="150" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-3">
+        <div class="col-md-4 text-center">
+          <div class="card border-primary mb-3">
+            <div class="card-header">Before</div>
+            <div class="card-body">
+              <img height="100" width="auto" [src]="oldDog.img" alt="Image of {{ oldDog.name }}" class="img-fluid mb-2">
+              <h5>{{ oldDog.name }}</h5>
+              <p><strong>Breed:</strong> {{ oldDog.breed }}</p>
+              <p><strong>Gender:</strong> {{ oldDog.gender }}</p>
+              <p><strong>Age:</strong> {{ oldDog.age }} years</p>
+            </div>
+          </div>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-md-4 text-center">
+          <div class="card border-success mb-3">
+            <div class="card-header">After</div>
+            <div class="card-body">
+              <img height="100" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-2">
+              <h5>{{ selectedDog.name }}</h5>
+              <p><strong>Breed:</strong> {{ selectedDog.breed }}</p>
+              <p><strong>Gender:</strong> {{ selectedDog.gender }}</p>
+              <p><strong>Age:</strong> {{ selectedDog.age }} years</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
           <div class="mb-3">
             <label for="name" class="form-label">Name:</label>
             <input type="text" [(ngModel)]="selectedDog.name" name="name" id="name" placeholder="Name" class="form-control" required>
