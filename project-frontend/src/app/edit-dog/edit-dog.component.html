@@ -55,7 +55,7 @@
             <div class="card-header">Saved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="oldDog.img" alt="Image of {{ oldDog.name }}" class="img-fluid mb-2">
-              <h5>{{ oldDog.name }}</h5>
+              <h4><strong>{{ oldDog.name }}</strong></h4>
               <p><strong>Breed:</strong> {{ oldDog.breed }}</p>
               <p><strong>Gender:</strong> {{ oldDog.gender }}</p>
               <p><strong>Age:</strong> {{ oldDog.age }} years</p>
@@ -68,7 +68,7 @@
             <div class="card-header">Unsaved Dog Data</div>
             <div class="card-body">
               <img height="100" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-2">
-              <h5>{{ selectedDog.name }}</h5>
+              <h4><strong>{{ selectedDog.name }}</strong></h4>
               <p><strong>Breed:</strong> {{ selectedDog.breed }}</p>
               <p><strong>Gender:</strong> {{ selectedDog.gender }}</p>
               <p><strong>Age:</strong> {{ selectedDog.age }} years</p>
@@ -87,7 +87,10 @@
           </div>
           <div class="mb-3">
             <label for="gender" class="form-label">Gender:</label>
-            <input type="text" [(ngModel)]="selectedDog.gender" name="gender" id="gender" placeholder="Gender" class="form-control" required>
+            <select [(ngModel)]="selectedDog.gender" name="gender" id="gender" class="form-control" required>
+              <option value="Male" [selected]="selectedDog.gender === 'Male'">Male</option>
+              <option value="Female" [selected]="selectedDog.gender === 'Female'">Female</option>
+            </select>
           </div>
           <div class="mb-3">
             <label for="img" class="form-label">Image URL:</label>
