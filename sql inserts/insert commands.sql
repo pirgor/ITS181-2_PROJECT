@@ -1,4 +1,4 @@
-
+-- insert dog records
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (70,5,'Aspin','Female','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/BANOI.jpg?raw=true','Banoi');
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (71,8,'Aspin','Male','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/BLESSING.jpg?raw=true','Blessing');
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (72,4,'Aspin','Female','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/HALEY.jpg?raw=true','Haley');
@@ -12,3 +12,13 @@ INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (79,3,'Aspi
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (80,2,'Aspin','Female','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/USAGI.jpg?raw=true','Usagi');
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (81,2,'Aspin','Male','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/WALTER.jpg?raw=true','Walter White');
 INSERT INTO `dogs` (`id`,`age`,`breed`,`gender`,`img`,`name`) VALUES (82,6,'Aspin','','https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/WHITEY.jpg?raw=true','Whitey');
+
+
+
+-- insert user accounts
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('1', 'admin@gmail.com', 'Admin', 'admin', 'admin');
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('2', 'sean@gmail.com', 'Sean', 'user', 'user');
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('3', 'lorelei@gmail.com', 'Lorelei', 'user', 'user');
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('4', 'angelo@gmail.com', 'Angelo', 'user', 'user');
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('5', 'keith@gmail.com', 'Keith', 'user', 'user');
+INSERT INTO `springbootdb`.`paws_users` (`user_id`, `email`, `name`, `password`, `user_type`) VALUES ('6', 'fatima@gmail.com', 'Fatima', 'user', 'user');
