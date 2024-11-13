@@ -9,6 +9,7 @@ import { ShowDogComponent } from './show-dog/show-dog.component';
 import { AddDogComponent } from './add-dog/add-dog.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { EditDogComponent } from './edit-dog/edit-dog.component';
 import { LoginComponent } from './login/login.component';
 import { EditDogComponent } from './edit-dog/edit-dog.component';
 
@@ -19,6 +20,7 @@ import { EditDogComponent } from './edit-dog/edit-dog.component';
     ShowDogComponent,
     AddDogComponent,
     HomeComponent,
+    EditDogComponent,
     LoginComponent,
     EditDogComponent,
   ],
