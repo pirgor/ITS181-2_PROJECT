@@ -84,4 +84,5 @@ export class EditDogComponent implements OnInit {
 
   save(): void{
     window.alert("Record has been updated")
+  }
 }
