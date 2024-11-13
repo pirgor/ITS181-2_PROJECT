@@ -40,7 +40,7 @@ export class EditDogComponent implements OnInit {
           console.log(`${this.newDog.name} updated successfully`);
           this.dogService.getDogs().subscribe((dogs) => this.dogs = dogs);
           this.oldDog = { ...this.newDog };
-          //this.router.navigate(['/']);
+          this.router.navigate(['/dogs']);
         },
         error: (error) => {
           console.error(`Error editing ${this.newDog.name}:`, error);
@@ -81,4 +81,7 @@ export class EditDogComponent implements OnInit {
     this.authService.logout();
     location.reload();
   }
+
+  save(): void{
+    window.alert("Record has been updated")
 }
