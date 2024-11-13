@@ -18,13 +18,10 @@
                     <a class="nav-link active" href="javascript:void(0)">Add Record</a>
                 </li>
                 <li class="nav-item" *ngIf="user?.userType === 'admin'">
-                    <a class="nav-link" href="#">Manage Records</a>
+                    <a class="nav-link" href="/manage">Manage Records</a>
                 </li>
                 <li class="nav-item" *ngIf="user?.userType === 'admin'">
                     <a class="nav-link" href="/dogs">View Records</a>
-                </li>
-                <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
-                    <a class="nav-link" href="#">About PAWS</a>
                 </li>
                 <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
                     <a class="nav-link" href="/dogs">Adopt</a>
@@ -39,16 +36,19 @@
 </nav>
 <!-- Navbar -->
 <div *ngIf="user?.userType === 'admin'">
-    <h1>Add Dog Form</h1>
+    <h1>Add New Record</h1>
     <form (ngSubmit)="addDog()">
         <input type="text" [(ngModel)]="newDog.name" name="name" placeholder="Name" required><br>
         <input type="text" [(ngModel)]="newDog.breed" name="breed" placeholder="Breed" required><br>
         <input type="text" [(ngModel)]="newDog.gender" name="gender" placeholder="Gender" required><br>
         <input type="text" [(ngModel)]="newDog.img" name="img" placeholder="Image URL" required><br>
         <input type="number" [(ngModel)]="newDog.age" name="age" placeholder="Age" required><br>
-        <button type="submit">Add Dog</button>
+        <button type="submit" (click)="added()">Add Dog</button>
     </form>
 </div>
-<div *ngIf="user?.useType === 'user' || user?.userType === null">
-    <h1>This page can only be accessed using an ADMIN account!</h1>
+
+<div *ngIf="user?.userType === 'user' || user?.userType === null">
+    <div class="container mt-4">
+        <h1 class="text-danger">This page can only be accessed using an ADMIN account!</h1>
+    </div>
 </div>

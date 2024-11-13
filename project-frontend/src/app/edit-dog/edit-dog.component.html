@@ -1,0 +1,118 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://github.com/pirgor/ITS181-2_PROJECT/blob/main/images/logo.png?raw=true" alt="Logo" width="70"
+          height="70" class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/home">Home</a>
+          </li>
+          <li class="nav-item" *ngIf="user?.userType === 'admin'">
+            <a class="nav-link" href="/add">Add Record</a>
+          </li>
+          <li class="nav-item" *ngIf="user?.userType === 'admin'">
+            <a class="nav-link active" href="/manage">Manage Records</a>
+          </li>
+          <li class="nav-item" *ngIf="user?.userType === 'admin'">
+            <a class="nav-link" href="/dogs">View Records</a>
+          </li>
+          <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
+            <a class="nav-link" href="/dogs">Adopt</a>
+          </li>
+        </ul>
+        <button class="btn btn-outline-success ms-auto" [routerLink]="['/login']"
+          *ngIf="user?.userType === null">Login</button>
+        <button class="btn btn-outline-success ms-auto" (click)="logout()"
+          *ngIf="user?.userType === 'admin' || user?.userType === 'user'">Logout</button>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+  
+  <div *ngIf="user?.userType === 'admin'">
+    <div class="container mt-4">
+      <div class="mb-3">
+        <label for="dogSelect" class="display-6 form-label">Choose a dog:</label>
+        <select class="form-select" id="dogSelect" [(ngModel)]="selectedDogId">
+          <option *ngFor="let dog of dogs" [value]="dog.id">{{ dog.name }}</option>
+        </select>
+      </div>
+  
+      <form (ngSubmit)="editDog()">
+        <div *ngIf="selectedDog" class="row">
+          <div class="col-md-4 text-center">
+            <div class="card border-primary mb-3 shadow">
+              <div class="card-header">Saved Dog Data</div>
+              <div class="card-body">
+                <img height="100" width="auto" [src]="oldDog.img" alt="Image of {{ oldDog.name }}" class="img-fluid mb-2">
+                <h4><strong>{{ oldDog.name }}</strong></h4>
+                <p><strong>Breed:</strong> {{ oldDog.breed }}</p>
+                <p><strong>Gender:</strong> {{ oldDog.gender }}</p>
+                <p><strong>Age:</strong> {{ oldDog.age }} years</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4 text-center">
+            <div class="card border-success mb-3 shadow">
+              <div class="card-header">Unsaved Dog Data</div>
+              <div class="card-body">
+                <img height="100" width="auto" [src]="selectedDog.img" alt="Image of {{ selectedDog.name }}" class="img-fluid mb-2">
+                <h4><strong>{{ selectedDog.name }}</strong></h4>
+                <p><strong>Breed:</strong> {{ selectedDog.breed }}</p>
+                <p><strong>Gender:</strong> {{ selectedDog.gender }}</p>
+                <p><strong>Age:</strong> {{ selectedDog.age }} years</p>
+              </div>
+            </div>
+          </div>
+  
+          <div class="col-md-4">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name:</label>
+              <input type="text" [(ngModel)]="selectedDog.name" name="name" id="name" placeholder="Name" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="breed" class="form-label">Breed:</label>
+              <input type="text" [(ngModel)]="selectedDog.breed" name="breed" id="breed" placeholder="Breed" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender:</label>
+              <select [(ngModel)]="selectedDog.gender" name="gender" id="gender" class="form-control" required>
+                <option value="Male" [selected]="selectedDog.gender === 'Male'">Male</option>
+                <option value="Female" [selected]="selectedDog.gender === 'Female'">Female</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="img" class="form-label">Image URL:</label>
+              <input type="text" [(ngModel)]="selectedDog.img" name="img" id="img" placeholder="Image URL" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age:</label>
+              <input type="number" [(ngModel)]="selectedDog.age" name="age" id="age" placeholder="Age" class="form-control" required>
+            </div>
+  
+            <div class="d-flex justify-content-between">
+              <button type="button" class="btn btn-danger" (click)="deleteDog()">Delete</button>
+              <button type="button" class="btn btn-secondary" (click)="reset()">Reset</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <div *ngIf="user?.userType === 'user' || user?.userType === null">
+    <div class="container mt-4">
+      <h1 class="text-danger">This page can only be accessed using an ADMIN account!</h1>
+    </div>
+  </div>
+  
+  

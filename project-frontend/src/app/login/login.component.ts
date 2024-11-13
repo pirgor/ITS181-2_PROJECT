@@ -10,7 +10,8 @@ import { UserService } from 'app/service/user.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  user: User = {
+    user: User = {
+    id: 0,
     email: '',
     password: '',
     name: '',

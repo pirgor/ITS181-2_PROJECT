@@ -10,6 +10,7 @@ import { AddDogComponent } from './add-dog/add-dog.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { EditDogComponent } from './edit-dog/edit-dog.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LoginComponent } from './login/login.component';
     AddDogComponent,
     HomeComponent,
     LoginComponent,
+    EditDogComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ import { AuthService } from 'app/service/auth.service';
 })
 export class AddDogComponent {
   newDog: Dog = {
+    id: 0,
     name: '',
     breed: '',
     gender: '',
@@ -28,7 +29,7 @@ export class AddDogComponent {
   addDog() {
     this.dogService.addDog(this.newDog).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/dogs']);
       },
       error: (error) => console.error('Error adding dog:', error)
     });
@@ -37,5 +38,8 @@ export class AddDogComponent {
   logout(): void{
     this.authService.logout();
     location.reload();
+  }
+  added(): void{
+    window.alert("New Record has been added")
   }
 }

@@ -1,3 +1,79 @@
-body {
-    background-color: #f0f8ff; /* Light blue background */
-  }
+.dog-card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}
+
+.dog-card {
+  display: flex;
+  background-color: white;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.dog-image {
+  flex: 1;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dog-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.dog-info {
+  flex: 1;
+  padding: 20px;
+  text-align: left;
+}
+
+.dog-info h3 {
+  font-size: 32px;
+  color: #333;
+  margin-top: 0;
+}
+
+.dog-info p {
+  font-size: 20px;
+  color: #555;
+  margin: 10px 0;
+}
+
+p.highlight {
+  background-color: #f0f8ff;
+  color: black;
+  padding: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.adopt-button {
+  display: inline-block;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.adopt-button:hover {
+  background-color: #555;
+}

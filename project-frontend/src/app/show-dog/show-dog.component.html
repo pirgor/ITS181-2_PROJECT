@@ -15,19 +15,16 @@
             <a class="nav-link" aria-current="page" href="/home">Home</a>
           </li>
           <li class="nav-item" *ngIf="user?.userType === 'admin'">
-            <a class="nav-link" href="#">Add Record</a>
+            <a class="nav-link" href="/add">Add Record</a>
           </li>
           <li class="nav-item" *ngIf="user?.userType === 'admin'">
-            <a class="nav-link" href="#">Manage Records</a>
+            <a class="nav-link" href="/manage">Manage Records</a>
           </li>
           <li class="nav-item" *ngIf="user?.userType === 'admin'">
-            <a class="nav-link active" href="/dogs">View Records</a>
+            <a class="nav-link active" href="javascript:(0);">View Records</a>
           </li>
           <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
-            <a class="nav-link" href="#">About PAWS</a>
-          </li>
-          <li class="nav-item" *ngIf="user?.userType === 'user' || user?.userType === null">
-            <a class="nav-link active" href="#">Adopt</a>
+            <a class="nav-link active" href="javascript:(0);">Adopt</a>
           </li>
         </ul>
         <button class="btn btn-outline-success ms-auto" [routerLink]="['/login']"
@@ -38,16 +35,26 @@
     </div>
   </nav>
   <!-- Navbar -->
+<div class="dog-card-container">
+    <div class="dog-card">
+        <div class="dog-image">
+            <img src="{{dog.img}}" alt="{{dog.name}}">
+        </div>
+        <div class="dog-info">
+            <h3>{{dog.name}}</h3>
+            <p class="highlight">Breed:</p>
+            <p>{{dog.breed}}</p>
 
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-6 text-center">
-      <img src="{{dog.img}}" width="100%" height="auto" class="img-fluid rounded shadow">
+            <p class="highlight">Gender:</p>
+            <p>{{dog.gender}}</p>
+
+            <p class="highlight">Age:</p>
+            <p>{{dog.age}} years old</p>
+
+            <a href="/dogs" class="adopt-button" *ngIf="user?.userType === 'user'" (click)="showConfirmation()">Apply Now</a>
+            <a href="/login" class="adopt-button" *ngIf="user?.userType === null" (click)="mustLogin()">Apply Now</a>
+            <a href="/manage" class="adopt-button" *ngIf="user?.userType === 'admin'">Manage</a>
+        </div>
     </div>
-    <div class="col-md-6">
-      <h1 class="mb-3 text-primary">{{dog.name}}</h1>
-      <h2><strong>Breed: </strong> <span class="text-info">{{dog.breed}}</span></h2>
-      <h2><strong>Age: </strong> <span class="text-warning">{{dog.age}} years old</span></h2>
-    </div>
-  </div>
 </div>
+
