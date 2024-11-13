@@ -6,12 +6,10 @@ import { AddDogComponent } from './add-dog/add-dog.component';
 import { HomeComponent } from './home/home.component';
 import { EditDogComponent } from './edit-dog/edit-dog.component';
 import { LoginComponent } from './login/login.component';
-import { EditDogComponent } from './edit-dog/edit-dog.component';
 const routes: Routes = [
   {path:'', redirectTo: '/home', pathMatch:'full'},
   {path: 'dogs', component: ShowDogsComponent},
   {path: 'dogs/:id', component: ShowDogComponent},
-  {path: 'edit', component: EditDogComponent},
   {path: 'add', component: AddDogComponent},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
