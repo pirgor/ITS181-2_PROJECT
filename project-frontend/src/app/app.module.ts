@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { EditDogComponent } from './edit-dog/edit-dog.component';
 import { LoginComponent } from './login/login.component';
+import { EditDogComponent } from './edit-dog/edit-dog.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     EditDogComponent,
     LoginComponent,
+    EditDogComponent,
   ],
   imports: [
     BrowserModule,

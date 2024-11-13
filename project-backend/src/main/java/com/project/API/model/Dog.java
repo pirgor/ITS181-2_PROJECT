@@ -8,7 +8,7 @@ import java.util.Objects;
 public class Dog {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long dogId;
 
     private String name;
     private String breed;
@@ -17,11 +17,11 @@ public class Dog {
     private int age;
 
     public long getId() {
-        return id;
+        return dogId;
     }
 
     public void setId(long id) {
-        this.id = id;
+        this.dogId = id;
     }
 
     public String getName() {
@@ -67,7 +67,7 @@ public class Dog {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
+        hash = 79 * hash + Objects.hashCode(this.dogId);
         hash = 79 * hash + Objects.hashCode(this.name);
         hash = 79 * hash + Objects.hashCode(this.breed);
         hash = 79 * hash + Objects.hashCode(this.gender);
@@ -103,13 +103,13 @@ public class Dog {
         if (!Objects.equals(this.age, other.age)) {
             return false;
         }
-        return Objects.equals(this.id, other.id);
+        return Objects.equals(this.dogId, other.dogId);
     }
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Dog{");
-        sb.append("id=").append(id);
+        sb.append("id=").append(dogId);
         sb.append(", img=").append(img).append('\'');
         sb.append(", name='").append(name).append('\'');
         sb.append(", breed=").append(breed).append('\'');

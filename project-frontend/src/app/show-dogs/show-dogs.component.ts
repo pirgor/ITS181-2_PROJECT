@@ -20,6 +20,7 @@ export class ShowDogsComponent {
 
   logout(): void{
     this.authService.logout();
+    location.reload();
   }
 
 }

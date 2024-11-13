@@ -3,6 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Dog } from 'app/model/dog.model';
 import { DogService } from 'app/service/dogservice.service';
 import { AuthService } from 'app/service/auth.service';
+import { SourceTextModule } from 'vm';
 
 @Component({
   selector: 'app-show-dog',
@@ -33,4 +34,12 @@ export class ShowDogComponent {
     location.reload();
   }
 
+  showConfirmation(): void {
+    window.alert("City Vet has been notified");
+  }
+
+  mustLogin(): void{
+    window.alert("You must be logged in to do that.")
+  }
+ 
 }

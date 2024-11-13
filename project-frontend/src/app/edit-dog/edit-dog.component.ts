@@ -28,18 +28,18 @@ export class EditDogComponent implements OnInit {
 
   set selectedDogId(id: number) {
     let dog = this.dogs.find(dog => { return dog.id == id; }) || null;
-    if (dog) { this.selectedDog = {...dog} };
-    this.oldDog = this.selectedDog ? {...this.selectedDog} : this.oldDog;
+    if (dog) { this.selectedDog = { ...dog } };
+    this.oldDog = this.selectedDog ? { ...this.selectedDog } : this.oldDog;
   }
 
   editDog() {
-    this.newDog = this.selectedDog ? {...this.selectedDog} : this.newDog;
+    this.newDog = this.selectedDog ? { ...this.selectedDog } : this.newDog;
     if (this.newDog.name && this.newDog.breed && this.newDog.gender && this.newDog.img && this.newDog.age) {
       this.dogService.editDog(this.newDog).subscribe({
         next: () => {
           console.log(`${this.newDog.name} updated successfully`);
           this.dogService.getDogs().subscribe((dogs) => this.dogs = dogs);
-          this.oldDog = {...this.newDog};
+          this.oldDog = { ...this.newDog };
           //this.router.navigate(['/']);
         },
         error: (error) => {
@@ -52,7 +52,10 @@ export class EditDogComponent implements OnInit {
   }
 
   deleteDog() {
-    if (this.oldDog) {
+
+    const confirmed = window.confirm('Are you sure you want to delete this dog?');
+
+    if (confirmed && this.oldDog) {
       this.dogService.deleteDog(this.oldDog).subscribe({
         next: () => {
           console.log('Dog deleted successfully');
@@ -63,16 +66,18 @@ export class EditDogComponent implements OnInit {
           console.error('Error deleting dog', error);
         }
       });
+    } else {
+      console.log('Deletion canceled');
     }
   }
 
   reset() {
-    this.selectedDog = {...this.oldDog};
+    this.selectedDog = { ...this.oldDog };
     let dog = this.dogs.find(dog => dog.id == this.oldDog.id);
     if (dog) { dog.name = this.oldDog.name };
   }
 
-  logout(): void{
+  logout(): void {
     this.authService.logout();
     location.reload();
   }
