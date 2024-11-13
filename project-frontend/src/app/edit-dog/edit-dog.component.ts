@@ -18,7 +18,7 @@ export class EditDogComponent implements OnInit {
 
   user: any;
 
-  constructor(private authService: AuthService, private dogService: DogService) { }
+  constructor(private authService: AuthService, private dogService: DogService, private router: Router) { }
 
   ngOnInit(): void {
     this.user = this.authService.getUser();
